@@ -5,6 +5,7 @@ on: [push]
 name: Linux_Container_Workflow
 
 jobs:
+  build:
     build-and-deploy:
         runs-on: ubuntu-latest
         steps:
@@ -19,10 +20,10 @@ jobs:
         
         - uses: azure/docker-login@v1
         with:
-          login-server: yourACRname.azurecr.io
+          login-server: demo01aksregistry.azurecr.io
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
       - run: |
-          docker build . -t yourACRname.azurecr.io/appdb:${{ github.sha }}
+          docker build . -t demo01aksregistry.azurecr.io/appdb:${{ github.sha }}
           docker push yourACRname.azurecr.io/appdb:${{ github.sha }}
