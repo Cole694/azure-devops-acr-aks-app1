@@ -23,4 +23,4 @@ jobs:
 
       - run: |
           docker build . -t demo01aksregistry.azurecr.io/appdb:${{ github.sha }}
-          docker push yourACRname.azurecr.io/appdb:${{ github.sha }}
+          docker push demo01aksregistry.azurecr.io/appdb:${{ github.sha }}
