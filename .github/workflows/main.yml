@@ -6,7 +6,7 @@ on: [push]
 name: Linux_Container_Workflow
 
 env:
-  IMAGE_NAME: app1-nginx:v1
+  IMAGE_NAME: stacksimplify/app1-nginx:v1
 
 jobs:
   build:
