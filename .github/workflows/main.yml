@@ -3,9 +3,8 @@
 # Controls when the workflow will run
 name: Linux_Container_Workflow
 
-on:
-  push: [push]
-    
+on: [push]
+  tags: ["v*.*.*"]
 
 env:
   IMAGE_NAME: app1
