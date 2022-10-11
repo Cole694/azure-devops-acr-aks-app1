@@ -2,32 +2,33 @@
 
 # Controls when the workflow will run
 
-on: [push]
-name: Linux_Container_Workflow
+name: SampleWebApp CICD
 
-env:
-  IMAGE_NAME: stacksimplify/app1-nginx:v1
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
+
   build:
-    name: Build container image
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      # - name: Get tag
-      #   id: tag
-      #   uses: dawidd6/action-get-tag@v1
-      - name: Log into registry
-        uses: docker/login-action@v1
+    - uses: actions/checkout@v3
+    
+    - name: Azure Container Registry Login 
+        uses: Azure/docker-login@v1 
         with:
-          registry: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-      - name: Build & Push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          build-args: |
-            version=${{ steps.tag.outputs.tag }}
-          tags: ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ steps.tag.outputs.tag }}
+        # Container registry server url
+        login-server: demoaksregistry01.azurecr.io
+        # Container registry username
+        username: ${{ secrets.ACR_USERNAME }}
+        # Container registry password
+        password: ${{ secrets.ACR_PASSWORD }} 
+    
+    - name: Build and Push the Docker image
+      run:  | 
+       docker build ./SampleWebApplication -t eastcanadadevtestacr.azurecr.io/samplewebapp:${{ github.run_id }}
+       docker push eastcanadadevtestacr.azurecr.io/samplewebapp:${{ github.run_id }} 
