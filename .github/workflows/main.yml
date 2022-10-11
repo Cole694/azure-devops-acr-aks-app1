@@ -15,14 +15,14 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Azure Container Registry Login 
-        uses: azure/docker-login@v1 
-        with:
-          # Container registry server url
-          login-server: demoaksregistry01.azurecr.io
-          # Container registry username
-          username: ${{ secrets.ACR_USERNAME }}
-          # Container registry password
-          password: ${{ secrets.ACR_PASSWORD }} 
+      uses: azure/docker-login@v1 
+      with:
+        # Container registry server url
+        login-server: demoaksregistry01.azurecr.io
+        # Container registry username
+        username: ${{ secrets.ACR_USERNAME }}
+        # Container registry password
+        password: ${{ secrets.ACR_PASSWORD }} 
     
     - name: Build and Push the Docker image
       run:  | 
