@@ -10,7 +10,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-
+    environment: deployment-approval
     steps:
     - uses: actions/checkout@v3
     
@@ -26,5 +26,5 @@ jobs:
     
     - name: Build and Push the Docker image
       run:  | 
-       docker build . -t demoaksregistry01.azurecr.io/app1-nginx:v1
-       docker push demoaksregistry01.azurecr.io/app1-nginx:v1
+       docker build . -t demoaksregistry01.azurecr.io/app1-nginx:v1.0.0
+       docker push demoaksregistry01.azurecr.io/app1-nginx:v1.0.0
