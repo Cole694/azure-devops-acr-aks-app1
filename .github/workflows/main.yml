@@ -26,5 +26,5 @@ jobs:
     
     - name: Build and Push the Docker image
       run:  | 
-       docker build . -t demoaksregistry01.azurecr.io/app1-nginx:1.0.0
-       docker push demoaksregistry01.azurecr.io/app1-nginx:1.0.0
+       docker build . -t demoaksregistry01.azurecr.io/app1/app1-nginx:1.0.0
+       docker push demoaksregistry01.azurecr.io/app1/app1-nginx:1.0.0
