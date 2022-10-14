@@ -18,7 +18,7 @@ jobs:
       uses: azure/docker-login@v1 
       with:
         # Container registry server url
-        login-server: demoaksregistry01.azurecr.io
+        login-server: demoaksregitry01.azurecr.io
         # Container registry username
         username: ${{ secrets.ACR_USERNAME }}
         # Container registry password
@@ -26,5 +26,5 @@ jobs:
     
     - name: Build and Push the Docker image
       run:  | 
-       docker build . -t demoaksregistry01.azurecr.io/app1-nginx:v1.0.0
-       docker push demoaksregistry01.azurecr.io/app1-nginx:v1.0.0
+       docker build . -t demoaksregitry01.azurecr.io/app1-nginx:v1.0.0
+       docker push demoaksregitry01.azurecr.io/app1-nginx:v1.0.0
