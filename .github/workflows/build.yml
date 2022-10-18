@@ -8,12 +8,11 @@ on:
 
 jobs:
 
-  build:
+  Build&PushACR:
     runs-on: ubuntu-latest
     environment: AZ_ACR
     steps:
     - uses: actions/checkout@v3
-    
     - name: Azure Container Registry Login 
       uses: azure/docker-login@v1 
       with:
@@ -28,3 +27,19 @@ jobs:
       run:  | 
        docker build . -t demoaksregistry01.azurecr.io/app1-nginx:1.0.0
        docker push demoaksregistry01.azurecr.io/app1-nginx:1.0.0
+
+  DeployAKS:
+    - name: Get AKS credentials
+      environment: aks-deployment
+          env:
+            CLUSTER_RESOURCE_GROUP_NAME: ${{ secrets.CLUSTER_RESOURCE_GROUP_NAME }}
+            CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
+          run: |
+            az aks get-credentials \
+              --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
+              --name $CLUSTER_NAME \
+              --overwrite-existing
+        - name: Deploy application
+          env:
+            ACR_NAME: ${{ secrets.ACR_NAME }}
+          run: make deploy
