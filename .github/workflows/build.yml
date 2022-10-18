@@ -1,4 +1,4 @@
-name: SampleWebApp CICD
+name: Build
 
 on:
   push:
