@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  Build&PushACR:
+  Build-Push-ACR:
     runs-on: ubuntu-latest
     environment: AZ_ACR
     steps:
