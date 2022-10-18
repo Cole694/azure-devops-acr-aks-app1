@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  Build-Push-ACR:
+  Build:
     runs-on: ubuntu-latest
     environment: AZ_ACR
     steps:
@@ -28,17 +28,18 @@ jobs:
        docker build . -t demoaksregistry01.azurecr.io/app1-nginx:1.0.0
        docker push demoaksregistry01.azurecr.io/app1-nginx:1.0.0
 
-  DeployAKS:
+  AKS:
+    name: Deploy AKS
+    needs: [Build]
     runs-on: ubuntu-latest
     environment: aks-deployment
-    - name: Get AKS credentials
-      steps:
-      - name: Get credentials
-        run: |
-          az aks get-credentials \
-            --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
-            --name $CLUSTER_NAME \
-            --overwrite-existing
+    steps:
+    - name: Get credentials
+      run: |
+        az aks get-credentials \
+          --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
+          --name $CLUSTER_NAME \
+          --overwrite-existing
 
       # - name: Deploy application
       #   env:
