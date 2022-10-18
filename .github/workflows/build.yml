@@ -28,16 +28,16 @@ jobs:
        docker build . -t demoaksregistry01.azurecr.io/app1-nginx:1.0.0
        docker push demoaksregistry01.azurecr.io/app1-nginx:1.0.0
 
-  # DeployAKS:
-  #   - name: Get AKS credentials
-  #     environment: aks-deployment
-  #     steps:
-  #     - name: Get credentials
-  #       run: |
-  #         az aks get-credentials \
-  #           --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
-  #           --name $CLUSTER_NAME \
-  #           --overwrite-existing
+  DeployAKS:
+    - name: Get AKS credentials
+      environment: aks-deployment
+      steps:
+      - name: Get credentials
+        run: |
+          az aks get-credentials \
+            --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
+            --name $CLUSTER_NAME \
+            --overwrite-existing
 
       # - name: Deploy application
       #   env:
