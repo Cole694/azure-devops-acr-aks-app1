@@ -1,2 +1,2 @@
 FROM nginx
-COPY index.html /usr/share/nginx/html
+COPY index.html /home/runner/work/azure-devops-acr-aks-app1/azure-devops-acr-aks-app1
