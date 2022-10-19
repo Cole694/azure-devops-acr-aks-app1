@@ -34,8 +34,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: aks-deployment
     steps:
-    - name: Azure Login
-      run: az Login
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Get credentials
       env:
