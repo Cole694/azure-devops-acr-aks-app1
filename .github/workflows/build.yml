@@ -35,7 +35,7 @@ jobs:
     environment: aks-deployment
     steps:
     - name: AZ Login
-      run: AZ Login
+      run: az Login
 
     - name: Get credentials
       env:
