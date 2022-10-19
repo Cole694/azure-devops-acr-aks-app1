@@ -47,6 +47,17 @@ jobs:
           --name $CLUSTER_NAME \
           --overwrite-existing
 
+      - name: make dir
+        run: |
+          mkdir code
+          cd code
+          git clone https://github.com/Cole694/azure-devops-acr-aks-app1
+          cd azure-devops-acr-aks-app1/
+          kubectl apply -f kube-manifests/
+
+        - name: ip
+          run: kubectl get svc
+
     # - name: dep
     #   env:
     #     SERVICE_PRINCIPLE_ID: ${{ secrets.SERVICE_PRINCIPLE_ID }}
