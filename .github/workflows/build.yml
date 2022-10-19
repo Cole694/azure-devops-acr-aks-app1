@@ -60,4 +60,4 @@ jobs:
         kubectl apply -f kube-manifests/
 
     - name: check dir
-      run: pwd
+      run: ls -al
