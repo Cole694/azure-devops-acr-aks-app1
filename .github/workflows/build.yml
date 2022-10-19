@@ -34,6 +34,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: aks-deployment
     steps:
+    - name: AZ Login
+      run: AZ Login
+
     - name: Get credentials
       env:
         CLUSTER_RESOURCE_GROUP_NAME: ${{ secrets.CLUSTER_RESOURCE_GROUP_NAME }}
@@ -43,7 +46,6 @@ jobs:
           --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
           --name $CLUSTER_NAME \
           --overwrite-existing
-
 
     # - name: dep
     #   env:
