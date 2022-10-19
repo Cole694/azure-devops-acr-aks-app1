@@ -44,7 +44,9 @@ jobs:
           --name $CLUSTER_NAME \
           --overwrite-existing
 
-    - name: Deploy application
-      env:
-        ACR_NAME: ${{ secrets.ACR_NAME }}
-      run: make deploy
+
+    # - name: dep
+    #   env:
+    #     SERVICE_PRINCIPLE_ID: ${{ secrets.SERVICE_PRINCIPLE_ID }}
+    #     SERVICE_PRINCIPLE_PASSWORD: ${{ secrets.SERVICE_PRINCIPLE_PASSWORD }}
+    #   run: |
