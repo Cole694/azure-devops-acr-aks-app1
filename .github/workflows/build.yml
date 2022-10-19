@@ -58,10 +58,3 @@ jobs:
         git clone https://github.com/Cole694/azure-devops-acr-aks-app1
         cd azure-devops-acr-aks-app1/
         kubectl apply -f kube-manifests/
-
-
-    # - name: dep
-    #   env:
-    #     SERVICE_PRINCIPLE_ID: ${{ secrets.SERVICE_PRINCIPLE_ID }}
-    #     SERVICE_PRINCIPLE_PASSWORD: ${{ secrets.SERVICE_PRINCIPLE_PASSWORD }}
-    #   run: |
