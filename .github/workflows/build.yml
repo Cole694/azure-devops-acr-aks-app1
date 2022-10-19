@@ -37,7 +37,7 @@ jobs:
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        
+
     - uses: azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
@@ -53,6 +53,11 @@ jobs:
           --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
           --name $CLUSTER_NAME \
           --overwrite-existing
+    - name: clone
+      run: |
+        git clone https://github.com/Cole694/azure-devops-acr-aks-app1
+        cd azure-devops-acr-aks-app1/
+        kubectl apply -f kube-manifests/
 
 
     # - name: dep
