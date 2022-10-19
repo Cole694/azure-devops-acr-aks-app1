@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: aks-deployment
     steps:
-    - name: AZ Login
+    - name: Azure Login
       run: az Login
 
     - name: Get credentials
