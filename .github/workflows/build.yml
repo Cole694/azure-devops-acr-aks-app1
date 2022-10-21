@@ -53,11 +53,8 @@ jobs:
           --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
           --name $CLUSTER_NAME \
           --overwrite-existing
-    - name: clone
+    - name: clone/apply manifests
       run: |
         git clone https://github.com/Cole694/azure-devops-acr-aks-app1
         cd azure-devops-acr-aks-app1/
         kubectl apply -f kube-manifests/
-
-    - name: check dir
-      run: ls -al
