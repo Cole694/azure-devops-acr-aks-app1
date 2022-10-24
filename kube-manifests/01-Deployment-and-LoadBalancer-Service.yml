@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app1-nginx
-          image: demoaksregistry01.azurecr.io/app1-nginx:v1.0.1
+          image: demoaksregistry01.azurecr.io/app1-nginx:v1.0.0
           ports:
             - containerPort: 80
       imagePullSecrets:
